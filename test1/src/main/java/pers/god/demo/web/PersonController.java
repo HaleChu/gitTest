@@ -8,6 +8,10 @@ import pers.god.demo.domain.Person;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Author GodChu
+ * @Date ${DATE}
+ */
 @RestController
 @RequestMapping("person")
 public class PersonController {
