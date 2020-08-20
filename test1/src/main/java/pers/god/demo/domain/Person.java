@@ -3,22 +3,22 @@ package pers.god.demo.domain;
 public class Person {
 
     private String name;
-    private Integer age;
+    private int age;
     private String gender;
 
     public Person() {
         System.out.println("*****空参构造方法被调用*****");
     }
 
-    public Person(String name, Integer age) {
-        System.out.println("*****带参构造方法被调用*****");
+    private Person(String name, int age) {
+        System.out.println("*****私有带参构造方法被调用*****");
         this.name = name;
         this.age = age;
         this.gender = gender;
     }
 
-    private Person(String name, Integer age, String gender) {
-        System.out.println("*****私有带参构造方法被调用*****");
+    public Person(String name, int age, String gender) {
+        System.out.println("*****公共带参构造方法被调用*****");
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -32,11 +32,11 @@ public class Person {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -57,5 +57,11 @@ public class Person {
                 '}';
     }
 
+    public void talk() {
+        System.out.println("*****公共方法talk()被调用*****");
+    }
 
+    private void run() {
+        System.out.println("*****私有方法run()被调用*****");
+    }
 }
