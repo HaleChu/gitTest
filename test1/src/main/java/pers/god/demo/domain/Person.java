@@ -6,7 +6,19 @@ public class Person {
     private Integer age;
     private String gender;
 
-    public Person(String name, Integer age, String gender) {
+    public Person() {
+        System.out.println("*****空参构造方法被调用*****");
+    }
+
+    public Person(String name, Integer age) {
+        System.out.println("*****带参构造方法被调用*****");
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    private Person(String name, Integer age, String gender) {
+        System.out.println("*****私有带参构造方法被调用*****");
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -44,4 +56,6 @@ public class Person {
                 ", gender='" + gender + '\'' +
                 '}';
     }
+
+
 }
