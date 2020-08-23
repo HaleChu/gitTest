@@ -1,6 +1,8 @@
 package pers.god.demo.algorithm;
 
 /**
+ * 快速排序
+ *
  * @Author GodChu
  * @Date 2020/8/18
  */
