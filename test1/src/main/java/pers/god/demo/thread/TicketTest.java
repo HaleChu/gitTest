@@ -11,10 +11,11 @@ public class TicketTest {
     public static void main(String[] args) {
         Window window = new Window();
         Thread t1 = new Thread(window);
-        t1.setName("窗口1");
         Thread t2 = new Thread(window);
-        t2.setName("窗口2");
         Thread t3 = new Thread(window);
+
+        t1.setName("窗口1");
+        t2.setName("窗口2");
         t3.setName("窗口3");
 
         t1.start();
@@ -33,12 +34,19 @@ class Window implements Runnable {
     @Override
     public void run() {
         while (true) {
-            if (ticket > 0) {
-                System.out.println("当前窗口:" + Thread.currentThread().getName() + ",票号:" + ticket);
-                ticket--;
-            } else {
-                System.out.println("票已买完,当前窗口:" + Thread.currentThread().getName());
-                break;
+            synchronized (this) {
+                if (ticket > 0) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("当前窗口:" + Thread.currentThread().getName() + ",票号:" + ticket);
+                    ticket--;
+                } else {
+                    System.out.println("票已买完,当前窗口:" + Thread.currentThread().getName());
+                    break;
+                }
             }
         }
     }
