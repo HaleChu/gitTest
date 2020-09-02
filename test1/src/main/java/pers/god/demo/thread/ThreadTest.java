@@ -1,5 +1,7 @@
 package pers.god.demo.thread;
 
+import java.util.HashMap;
+
 /**
  * Java多线程
  * <p>
@@ -23,6 +25,7 @@ package pers.god.demo.thread;
  */
 public class ThreadTest {
     public static void main(String[] args) throws InterruptedException {
+        new HashMap<>();
         MyThread myThread = new MyThread();
         myThread.setPriority(Thread.MAX_PRIORITY);
         myThread.start();
