@@ -1,4 +1,4 @@
-package pers.god.demo.localTime;
+package pers.god.demo.java8.localTime;
 
 import java.time.*;
 import java.util.Date;

@@ -26,9 +26,6 @@ public class TicketTest {
 
 class Window implements Runnable {
 
-    /**
-     * 不需要加static
-     */
     private int ticket = 100;
 
     @Override
