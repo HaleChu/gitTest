@@ -14,6 +14,7 @@ public class PeriodDemo {
         String str = "371100";
         System.out.println(str.substring(0, 4));
 
-
+        String s = "0827";
+        System.out.println(s.substring(0, 2));
     }
 }
