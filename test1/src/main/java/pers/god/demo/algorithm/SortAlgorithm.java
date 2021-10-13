@@ -6,7 +6,7 @@ package pers.god.demo.algorithm;
  * @Author GodChu
  * @Date 2020/8/18
  */
-public class FastSort {
+public class SortAlgorithm {
 
     public static void main(String[] args) {
         int[] arr = {23, 54, 21, 123, 16, 4, 2, 234, 153, 87, 56, 98};
