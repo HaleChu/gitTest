@@ -12,14 +12,6 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-/**
- * Created by maqidong 2018/8/21.
- *
- * @author maqidong
- * @version 1.0
- * @since 1.0
- * Copyright (C) 2017. SinoSoft All Rights Received
- */
 public class PasswordEncoderHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PasswordEncoderHelper.class);
