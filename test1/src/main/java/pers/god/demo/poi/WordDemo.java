@@ -21,7 +21,7 @@ public class WordDemo {
     public static void main(String[] args) {
         FileInputStream in;
         try {
-            in = new FileInputStream("D:\\aaa.docx");
+            in = new FileInputStream("D:\\电子政务外网服务器访问方式.docx");
             XWPFDocument document = new XWPFDocument(in);
             // 循环所有段落(循环[除表格和图片外的]每一行数据)
             List<XWPFParagraph> paragraphs = document.getParagraphs();

@@ -18,7 +18,7 @@ public class ZipCompressGenerate {
 
     public static void main(String[] args) throws FileNotFoundException {
         List<String> srcDir = Collections.singletonList("D:\\meeting\\sh");
-        OutputStream out = new FileOutputStream("D:\\meeting\\sh\\meeting.zip");
+        OutputStream out = new FileOutputStream("D:\\meeting\\meeting.zip");
         ZipOutputStream zos = null;
         try {
             zos = new ZipOutputStream(out);
@@ -28,6 +28,7 @@ public class ZipCompressGenerate {
                 sourceFileList.add(sourceFile);
             }
             compress(sourceFileList, zos, true);
+            System.out.println("全部文件压缩完成...");
         } catch (Exception e) {
             throw new RuntimeException("zip error from ZipUtils", e);
         } finally {
@@ -79,15 +80,20 @@ public class ZipCompressGenerate {
     private static void compress(File sourceFile, ZipOutputStream zos, String name, boolean keepDirStructure) throws IOException {
         byte[] buf = new byte[BUFFER_SIZE];
         if (sourceFile.isFile()) {
-            zos.putNextEntry(new ZipEntry(name));
-            int len;
-            FileInputStream in = new FileInputStream(sourceFile);
-            while ((len = in.read(buf)) != -1) {
-                zos.write(buf, 0, len);
+            try {
+                zos.putNextEntry(new ZipEntry(name));
+                int len;
+                FileInputStream in = new FileInputStream(sourceFile);
+                while ((len = in.read(buf)) != -1) {
+                    zos.write(buf, 0, len);
+                }
+                // Complete the entry
+                zos.closeEntry();
+                in.close();
+                System.out.println("[" + name + "]压缩完成");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            // Complete the entry
-            zos.closeEntry();
-            in.close();
         } else {
             File[] listFiles = sourceFile.listFiles();
             if (listFiles == null || listFiles.length == 0) {

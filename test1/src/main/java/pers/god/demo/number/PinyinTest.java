@@ -11,7 +11,7 @@ import pers.god.demo.util.PinyinNewUtil;
 public class PinyinTest {
 
     public static void main(String[] args) {
-        String name = "仇丹东";
+        String name = "单铭婕";
         System.out.println(PinyinUtil.getPinyin(name) + " " + PinyinUtil.getFirstLetter(name, ""));
         System.out.println(PinyinNewUtil.getPinyin(name) + " " + PinyinNewUtil.getFirstLetters(name, ""));
 
