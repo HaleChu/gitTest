@@ -15,5 +15,12 @@ public class PinyinTest {
         System.out.println(PinyinUtil.getPinyin(name) + " " + PinyinUtil.getFirstLetter(name, ""));
         System.out.println(PinyinNewUtil.getPinyin(name) + " " + PinyinNewUtil.getFirstLetters(name, ""));
 
+        String id = "4028816d7f8c6426017f8c781585062c";
+        System.out.println(id.length());
+
+        String s = "" + (char) 11;
+        name = name + s;
+        System.out.println(name);
+        System.out.println(name.substring(0, name.length() - 1));
     }
 }

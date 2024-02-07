@@ -13,7 +13,7 @@ import java.util.Locale;
 public class IKSegmentTest {
 
     public static void main(String[] args) {
-        String s = "3bVHQSk0";
+        String s = "ccl780926";
         System.out.println(s);
         System.out.println(SmUtil.sm3(s));
 
