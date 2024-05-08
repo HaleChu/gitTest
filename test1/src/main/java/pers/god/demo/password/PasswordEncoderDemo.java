@@ -13,7 +13,7 @@ public class PasswordEncoderDemo {
         System.out.println("原密码:" + password);
         System.out.println("加密密码:" + passwordDes);
 
-        String passDes = "XjniR1m8mHt9Le7fOU57eA==";
+        String passDes = "1sOGxigGLZRf3SriuBIKjA==";
         System.out.println("加密密码:" + passDes + "原密码:" + PasswordEncoderHelper.decryptByDES(passDes));
     }
 
