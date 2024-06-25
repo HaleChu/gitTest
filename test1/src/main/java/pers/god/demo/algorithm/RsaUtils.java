@@ -3,7 +3,7 @@ package pers.god.demo.algorithm;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.crypto.Cipher;
-import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -14,14 +14,11 @@ import java.security.spec.X509EncodedKeySpec;
 public class RsaUtils {
 
     // Rsa 私钥MII
-    public static String privateKey =
-            "BVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAqhHyZfSsYourNxaY"
-                    + "7Nt+PrgrxkiA50efORdI5U5lsW79MmFnusUA355oaSXcLhu5xxB38SMSyP2KvuKN"
-                    + "PuH3owIDAQABAkAfoiLyL+Z4lf4Myxk6xUDgLaWGximj20CUf+5BKKnlrK+Ed8gA"
-                    + "kM0HqoTt2UZwA5E2MzS4EI2gjfQhz5X28uqxAiEA3wNFxfrCZlSZHb0gn2zDpWow"
-                    + "cSxQAgiCstxGUoOqlW8CIQDDOerGKH5OmCJ4Z21v+F25WaHYPxCFMvwxpcw99Ecv"
-                    + "DQIgIdhDTIqD2jfYjPTY8Jj3EDGPbH2HHuffvflECt3Ek60CIQCFRlCkHpi7hthh"
-                    + "YhovyloRYsM+IS9h/0BzlEAuO0ktMQIgSPT3aFAgJYwKpqRYKlLDVcflZFCKY7u3" + "UP8iWi1Qw0Y=";
+    public static final String privateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJVhQV/K3Mht1bMDk5yT0hprtwpm1mvLEvbB+4+PgzAgvHzGEVokVhwWj7vYzj0LECUm0EZWdqG+aoDJrPCBsB80KHMcZkeXb8fpB6reXIW3e1XquQkMScCCkh5ukvf3CmUoSVlpsMocRl3KRMRgSqSd18x8dKhkkOfVpLDISKi3AgMBAAECgYBDm/cYwhpXZM7Z7P58WbM4XhREUvMtaoY0xOt0uIGp4Mcuuf7Ui6mloNiBLsl5e25dQkn16+BZqHNPwvfRCwGJDLChKG8UZj4JLgYtxv3txLMvZa4oxHJlCLUvxYsc9/PAfGa3hK3z5zAXaIddXy8u1BKgP3q2mEgN+cNXx7vT4QJBAM4oh2jYK6O1uR4LVwh1xpqcu2pDDHV90cD4AkDcMDV8nN5zkRUzmNe4lZcZBGPUubDqWv+colWqAqSty5Dz/7kCQQC5fp5qANqkSYmSJnaxZYXnZ0+ZJez2ZWOASK9kfkNNWHnnfOxBdF3ycVAx8E2tm1/OnyTdU0jrVp/a1lPZy8PvAkAVmSVmlI8t3ZIBVcrOdhhShm0UGuYpQP9CqjkCNo9Oazm8DHt8ryUqJIp3hAVzuAukP0k9Ulmng+I3AoY7L3TxAkA0PMwv3f20tmDfn6VdX9HN0PJBlsScvwC+Z7m8+zHI3lm2Lx/5buPmGrMS3TGC6naYoYioK4QlgkeSQTlr5E5RAkEAvwddJIln3DUuN1AzQ2Ia1Jzq8kDadU9MOOewbBA6T2gPxUkcejg3ZKLUurhBYrEhnPUMVKhLC392vSmm+8BexQ==";
+    /**
+     * 公钥
+     */
+    public static final String PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVYUFfytzIbdWzA5Ock9Iaa7cKZtZryxL2wfuPj4MwILx8xhFaJFYcFo+72M49CxAlJtBGVnahvmqAyazwgbAfNChzHGZHl2/H6Qeq3lyFt3tV6rkJDEnAgpIebpL39wplKElZabDKHEZdykTEYEqkndfMfHSoZJDn1aSwyEiotwIDAQAB";
 
     /**
      * 构建RSA密钥对
@@ -70,7 +67,7 @@ public class RsaUtils {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, publicKey);
         byte[] result = cipher.doFinal(Base64.decodeBase64(text));
-        return new String(result);
+        return new String(result, StandardCharsets.UTF_8);
     }
 
     /**
@@ -104,7 +101,7 @@ public class RsaUtils {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] result = cipher.doFinal(Base64.decodeBase64(text));
-        return URLDecoder.decode(new String(result),"UTF-8");
+        return new String(result, StandardCharsets.UTF_8);
     }
 
 
@@ -119,29 +116,6 @@ public class RsaUtils {
         return decryptByPrivateKey(privateKey, text);
     }
 
-    public static void main(String[] args) throws Exception {
-        RsaKeyPair rsaKeyPair = null;
-        try {
-            rsaKeyPair = RsaUtils.generateKeyPair();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        System.out.println("公钥：");
-        System.out.println(rsaKeyPair.getPublicKey());
-        System.out.println("私钥：");
-        System.out.println(rsaKeyPair.getPrivateKey());
-        String phone = "4008123123";
-        //公钥加密，私钥解密
-        String phoneRsa = RsaUtils.encryptByPublicKey(rsaKeyPair.getPublicKey(), phone);
-        System.out.println("加密后：" + phoneRsa);
-        String phoneRsa2 = RsaUtils.decryptByPrivateKey(rsaKeyPair.getPrivateKey(), phoneRsa);
-        System.out.println("解密后：" + phoneRsa2);
-        //私钥加密，公钥解密
-        String phoneRsa3 = RsaUtils.encryptByPrivateKey(rsaKeyPair.getPrivateKey(), phone);
-        System.out.println("加密后：" + phoneRsa3);
-        String phoneRsa4 = RsaUtils.decryptByPublicKey(rsaKeyPair.getPublicKey(), phoneRsa3);
-        System.out.println("解密后：" + phoneRsa4);
-    }
 
     /**
      * RSA密钥对对象
