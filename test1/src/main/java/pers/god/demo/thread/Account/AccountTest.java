@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @Author GodChu
  * @Date 2020/8/24
  */
-public class AcountTest {
+public class AccountTest {
 
     public static void main(String[] args) {
         Account account = new Account(new BigDecimal(0));

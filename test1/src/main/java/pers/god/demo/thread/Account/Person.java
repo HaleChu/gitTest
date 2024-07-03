@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  */
 public class Person extends Thread {
 
-    private Account account;
+    private final Account account;
 
     public Person(Account account) {
         this.account = account;
