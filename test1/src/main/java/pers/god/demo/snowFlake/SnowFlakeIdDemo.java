@@ -2,6 +2,8 @@ package pers.god.demo.snowFlake;
 
 import cn.hutool.core.util.IdUtil;
 
+import java.util.Locale;
+
 /**
  * @Author chuhao
  * @Date 2024/7/2
@@ -10,19 +12,36 @@ import cn.hutool.core.util.IdUtil;
 public class SnowFlakeIdDemo {
 
     public static void main(String[] args) {
-        String fastUUID = IdUtil.fastUUID();
-        String fastSimpleUUID = IdUtil.fastSimpleUUID();
-        String randomUUID = IdUtil.randomUUID();
-        String simpleUUID = IdUtil.simpleUUID();
-        System.out.println("fastUUID:" + fastUUID);
-        System.out.println("fastSimpleUUID:" + fastSimpleUUID);
-        System.out.println("randomUUID:" + randomUUID);
-        System.out.println("simpleUUID:" + simpleUUID);
-        System.out.println("snowFlake:");
-        System.out.println(IdUtil.getSnowflake(0, 0).nextId());
-        System.out.println(IdUtil.getSnowflake(0, 0).nextIdStr());
-        System.out.println(IdUtil.getSnowflake(0, 1).nextIdStr());
-        System.out.println(IdUtil.getSnowflake(1, 1).nextIdStr());
-        System.out.println(IdUtil.getSnowflake(1, 2).nextIdStr());
+        test(20);
+    }
+
+    public static void test(int num) {
+        for (int i = 0; i < num; i++) {
+            System.out.println(IdUtil.fastSimpleUUID());
+        }
+    }
+
+    public static void test1(int num) {
+        for (int i = 0; i < num; i++) {
+            System.out.println(IdUtil.simpleUUID());
+        }
+    }
+
+    public static void test2(int num) {
+        for (int i = 0; i < num; i++) {
+            System.out.println(IdUtil.fastSimpleUUID().toUpperCase(Locale.ROOT));
+        }
+    }
+
+    public static void test3(int num) {
+        for (int i = 0; i < num; i++) {
+            System.out.println(IdUtil.fastSimpleUUID());
+        }
+    }
+
+    public static void test4(int num) {
+        for (int i = 0; i < num; i++) {
+            System.out.println(IdUtil.randomUUID());
+        }
     }
 }
