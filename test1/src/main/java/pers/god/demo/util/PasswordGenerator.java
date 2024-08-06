@@ -1,5 +1,7 @@
 package pers.god.demo.util;
 
+import pers.god.demo.password.PasswordEncoderHelper;
+
 import java.util.Random;
 
 /**
@@ -67,5 +69,9 @@ public class PasswordGenerator {
 
     public static void main(String[] args) {
         System.out.println(randomPassword());
+        System.out.println(PasswordEncoderHelper.encodeByDES("123456"));
+
+        String name = "hjycServicesAPP__20240805182521.apk";
+        System.out.println(name.substring(name.lastIndexOf(".") + 1));
     }
 }

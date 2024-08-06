@@ -1,30 +1,55 @@
 package pers.god.demo.snowFlake;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Random;
 
 /**
- * @Author chuhao
- * @Date 2024/7/25
- * @Version 1.0.0
+ * 身份证生成
  */
 public class IdNumberGenerator {
 
-    public static void main(String[] args) {
-        // 生成随机的身份证号码
+    public static String generateRandomIDCard() {
         Random random = new Random();
-        int[] coefficient = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
-        String[] idCardNumberArray = new String[18];
-        int sum = 0;
-        for (int i = 0; i < 17; i++) {
-            int number = random.nextInt(10);
-            sum += number * coefficient[i];
-            idCardNumberArray[i] = String.valueOf(number);
+        StringBuilder idCard = new StringBuilder();
+
+        // 前六位地址码，随机生成省份和城市码
+        for (int i = 0; i < 6; i++) {
+            idCard.append(random.nextInt(10));
         }
-        int remainder = sum % 11;
-        String lastNumber = String.valueOf(remainder);
-        idCardNumberArray[17] = remainder == 10 ? "x" : lastNumber;
-        String idCardNumber = String.join("", idCardNumberArray);
-        System.out.println("随机生成的身份证号码为:" + idCardNumber);
+
+        // 出生年月日码
+        Calendar birthday = Calendar.getInstance();
+        birthday.set(1949, Calendar.OCTOBER, 1); // 最小日期101日
+        long start = birthday.getTimeInMillis();
+        birthday.set(2021, Calendar.DECEMBER, 31); // 最大日期1231日
+        long end = birthday.getTimeInMillis();
+        long randomTime = start + (long) (random.nextDouble() * (end - start));
+        birthday.setTimeInMillis(randomTime);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        idCard.append(sdf.format(birthday.getTime()));
+
+        // 顺序码，在特定范围内随机生成
+        for (int i = 0; i < 3; i++) {
+            idCard.append(random.nextInt(10));
+        }
+
+        // 校验码计算
+        int sum = 0;
+        if (idCard.length() == 18) {
+            for (int i = 0; i < 17; i++) {
+                sum += (int) (Integer.parseInt(String.valueOf(idCard.charAt(i))) * (Math.pow(2, 17 - i) % 11));
+            }
+        }
+        char checkCode = "10X98765432".charAt(sum % 11);
+        idCard.append(checkCode);
+
+        return idCard.toString();
+    }
+
+    public static void main(String[] args) {
+        String randomIDCard = generateRandomIDCard();
+        System.out.println("Random ID Card: " + randomIDCard);
     }
 }
 

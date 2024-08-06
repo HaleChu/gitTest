@@ -12,12 +12,7 @@ import java.security.SecureRandom;
 import java.security.Security;
 import java.util.Arrays;
 
-/**
- * @Author chuhao
- * @Date 2024/7/25
- * @Version 1.0.0
- */
-public class SmUtil {
+public class Sm4Util {
 
     static {
         Security.addProvider(new BouncyCastleProvider());
