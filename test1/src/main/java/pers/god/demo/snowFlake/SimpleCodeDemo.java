@@ -1,5 +1,6 @@
 package pers.god.demo.snowFlake;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
@@ -7,9 +8,9 @@ import java.net.URLEncoder;
  * @Date 2024/8/1
  * @Version 1.0.0
  */
-public class Cbdemo {
+public class SimpleCodeDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
         String str1 = "123456";
         System.out.println(PasswordEncoderHelper.encode(str1));
         String str2 = "Abc@123456";
@@ -21,6 +22,6 @@ public class Cbdemo {
         System.out.println(PasswordEncoderHelper.decryptByDES("YbsXngrNJ8Y="));
         System.out.println(PasswordEncoderHelper.decryptByDES("YbsXngrNJ8Y="));
 
-        System.out.println(URLEncoder.encode(""));
+        System.out.println(URLEncoder.encode("abcd"));
     }
 }

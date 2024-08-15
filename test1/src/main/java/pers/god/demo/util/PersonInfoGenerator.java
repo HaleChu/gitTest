@@ -1,14 +1,22 @@
-package pers.god.demo.snowFlake;
+package pers.god.demo.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 /**
  * 身份证生成
  */
-public class IdNumberGenerator {
+public class PersonInfoGenerator {
 
+    /**
+     * 姓名
+     */
+    /**
+     * 身份证
+     */
     public static String generateRandomIDCard() {
         Random random = new Random();
         StringBuilder idCard = new StringBuilder();
@@ -47,9 +55,18 @@ public class IdNumberGenerator {
         return idCard.toString();
     }
 
-    public static void main(String[] args) {
-        String randomIDCard = generateRandomIDCard();
-        System.out.println("Random ID Card: " + randomIDCard);
+    /**
+     * 手机号
+     */
+    public static String generateRandomPhoneNumber() {
+        List<String> startCodeList = Arrays.asList("134", "135", "136", "137",
+                "138", "139", "147", "150", "151", "152", "157", "158", "159",
+                "182", "183", "187", "188", "178", "130", "131", "132", "155",
+                "156", "185", "186", "133", "153", "177", "180", "181", "189");
+        Random random = new Random();
+        int index = random.nextInt(startCodeList.size());
+        int endCode = random.nextInt(99999999);
+        return startCodeList.get(index) + endCode;
     }
 }
 
