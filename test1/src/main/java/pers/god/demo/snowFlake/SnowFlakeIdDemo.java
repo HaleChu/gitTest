@@ -12,7 +12,7 @@ import java.util.Locale;
 public class SnowFlakeIdDemo {
 
     public static void main(String[] args) {
-        test4(16);
+        test(28);
     }
 
     public static void test(int num) {

@@ -27,6 +27,7 @@ public class IdNumberDemo {
 
 //        System.out.println(PersonInfoGenerator.generateRandomIDCard() + "," + PersonInfoGenerator.generateRandomPhoneNumber());
         String idCard = PersonInfoGenerator.generateRandomIDCard();
+//        String idCard = "A12345678";
         System.out.println(idCard);
         System.out.println(DigestUtils.md5Hex(idCard));
 //
