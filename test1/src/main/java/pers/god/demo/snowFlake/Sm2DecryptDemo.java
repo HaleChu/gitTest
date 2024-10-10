@@ -12,49 +12,18 @@ import java.net.URLEncoder;
 public class Sm2DecryptDemo {
 
     public static void main(String[] args) throws InvalidCipherTextException, UnsupportedEncodingException {
-//        KeyPair pair = SecureUtil.generateKeyPair("SM2");
-//        String privateKey = HexUtil.encodeHexStr(pair.getPrivate().getEncoded());
-//        String publicKey = HexUtil.encodeHexStr(pair.getPublic().getEncoded());
-//        System.out.println("公钥:" + publicKey);
-//        System.out.println("私钥:" + privateKey);
+        String encrypted = "04931d06e97a7f2161a86cc0d5d60051f051b70fa2dfbbc85e8b6052c554b2d9d334e2d447568c24797d09a5236e1acce5d98e9a8ebbfce103de372904291ee6ad3653cd1cc121cd1453a4d842e16591ac22188a53690228c098f9783b497ee4026c1b37f2061698ab1ded874356514f63970545750c930ca4350d12ffa5da20cac989c70fecc86f36fde8cce53cfdde";
+        String privateKey = "00F07EBC08D36FC22C595EBA3868A8EFAD3BAC17C2C152724F708649160C100FC3";
+        SM2 sm2 = SmUtil.sm2(privateKey, null);
+        String decrypted = sm2.decryptStr(encrypted, KeyType.PrivateKey);
+        System.out.println(decrypted);
 
-        String publicKey = "04581EBBF44F92566D1F79C5EEFBFE7CAAFB0046185DAB5A0317AF6ECAAD3A0B88AFE7D3B37B5F3809AE86D45256855CB3054F57922EA259A80CA17F1B32F28E91";
+//        https://healthcare-test.gyyyhospital.com?hjyctoken=040866caf165679bedc51606e0058b073ba7967258443a9637bb1644867eaae6f04c63fecbafabe2afe6c668e4d6392ad008d4feb008d6ae6c749b0fd363e74073a5f2f1e37d5e35eda17a0b3e900f50575d1f9a17781f0877bc2892ce542a563212aacf6d5277ac8700bcae1f85d7a9e0ba8880c5e5109c09486307ebec91279e51b0b1e1cf7c7c132df95cec0fb514476574c828c807bf4d397c118eebc40d01a8cee36050aa7f3d4723d776c09929678efa69e1d219d94195f55a41ae7669a21fde3cb8833e865f79d3c21e15d9732b695dce53e57e48b260543032249eb06ccc7ba0c10bfd58cd91153ed83fad614d20b67d85c0e210493472b365d0777b75b240041d3c1de125
 
-        String data = "430725198812200334";
+        String data = "[{\"uuid\":{\"algorithm\":\"SM4\",\"destroyed\":false,\"encoded\":\"aeVS5bstCHAyZagnPPhTNQ==\",\"format\":\"RAW\",\"keyIndex\":0}},{\"encode\":\"F8EA32BA0941B23EC20B18185D23321869639A8CE2E51707FE2EC46F368363F7\"}]";
+        System.out.println(URLEncoder.encode(data, "UTF-8"));
 
-        SM2 sm2 = SmUtil.sm2(null, publicKey);
-        String encryptHex = sm2.encryptHex(data, KeyType.PublicKey);
-        System.out.println(encryptHex);
-//
-//
-//        String data = "04835acdd117918b42f1daac51e8518b43537aa02bd7986eb0753197e42ab7304b511e01929eb9f74879a9723315c749afbddbd5982eb2bd3eb981b33825ca4cfc2a25cf916b4d912ca6b68d4bde42cbbea68cd7829789bded932fefffbb57d7c9f539b9af6be5ec1cf1908868a4cf7b827660ca2b56279faadca0433d80e6580d573a9a253f924034c761fba1fc4a4c9f7e88e4";
-//        String privateKey = "00CFFDE1C46C0671DED077249B65F9AAED79AA9B89892C37897F75E7C544D20879";
-//        SM2 sm2 = SmUtil.sm2(privateKey, null);
-//        String decrypted = sm2.decryptStr(data, KeyType.PrivateKey);
-//        System.out.println(decrypted);
-//
-        System.out.println(URLEncoder.encode("[{\"uuid\":{\"destroyed\":false,\"keyIndex\":0,\"format\":\"RAW\",\"algorithm\":\"SM4\",\"encoded\":\"wzzJSB/qTa2Klr2saN3VyQ==\"}},{\"encode\":\"AC5EDE31D1CAEBE90867D2600F1538F0\"},{\"b64SignedData\":\"zpZOVfw95ee2V0QgHoW7toI2va249d3KBG3zyx2/balwzlxwvqZggOmR6mxsA7atVw9runmsQIet6StOH6Kv/A==\"}]", "utf-8"));
-
-//        String data = "2bf9232474930c17b98dee921ad5372a0098f024c648438374313304b3d869405f1763185ec42b8616891c9a7495de582cf7810182af7bdc0eab1601dc7c55601860be1c8d71e65ea548f45b434631238c4d952c7b7ada532c2ecb321da8b5ea79c9915a787da987b2fd565ec9d8c1f2e15b";
-//        String privateKey = "68c75b12d868c0f7607b9792184ccce8ec4a8e4f6ce830bfa2ba3b91f75023c3";
-//        String decrypt = Sm2Util.decrypt(privateKey, data, 0);
-//        System.out.println(decrypt);
-
-//        System.out.println(PasswordEncoderHelper.decryptByDES("bJIkzwSubc4="));
-
-//        Map<String, Object> map = new LinkedHashMap<>();
-//        map.put("identificationNumber", "446968199612027791");
-//        map.put("timestamp", System.currentTimeMillis());
-//        map.put("secretKey", "talentService");
-//        String sign = DigestUtils.md5Hex(JSONObject.toJSONString(map)).toLowerCase();
-//        map.put("sign", sign);
-//        String publicKey = "MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE2FSWQvXImXs5r6yWdIImedqWl53L6Bx6XZPzBYBZKH935yEhEdKoM+PpR3JpZ2LtzzTDtcpHF8Bq2+csGpPHkg==";
-//        SM2 sm2 = SmUtil.sm2(null, publicKey);
-//        String encrypted = sm2.encryptBase64(JSONObject.toJSONString(map), KeyType.PublicKey);
-//        System.out.println(encrypted);
-
-        System.out.println(DigestUtils.md5Hex("123456"));
-
-
+        String s = DigestUtils.md5Hex("120225197410193165");
+        System.out.println(s);
     }
 }
