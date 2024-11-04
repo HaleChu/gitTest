@@ -18,14 +18,14 @@ public class SendMessageGenerator {
 
     public static void main(String[] args) {
         Map<String, Object> map = new LinkedHashMap<>();
-        map.put("identificationNumber", "430725198812200334");
-//        map.put("serviceCode", "04");
+        map.put("identificationNumber", "421102198602140515");
+        map.put("serviceCode", "07");
         map.put("timestamp", System.currentTimeMillis());
         map.put("secretKey", "talentService");
         String sign = DigestUtils.md5Hex(JSONObject.toJSONString(map));
         map.remove("secretKey");
         map.put("sign", sign);
-        String publicKey = "049EB7BB5595EF635E6CBE43BA3B4A204BDE318D1AB3F37AC7582756FCE05072C3E26C64F425DB5E8F835BDEFA234F256FC2BD066AD1686B8B5B438B98DEF23F5B";
+        String publicKey = "044C783CD6450D1BCC626DDC8EC14D100E9C7F33FFC60CB0CD2C55CEF71653AD83963B87562E0658A50600F67B0130C6CDEB23C94A3D04E9F9CEF5A386BF364B4E";
         SM2 sm2 = SmUtil.sm2(null, publicKey);
         String encrypted = sm2.encryptHex(JSONObject.toJSONString(map), KeyType.PublicKey);
         System.out.println(encrypted);
