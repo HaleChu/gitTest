@@ -12,7 +12,7 @@ import java.util.Locale;
 public class SnowFlakeIdDemo {
 
     public static void main(String[] args) {
-        test2(200);
+        test(150);
     }
 
     public static void test(int num) {
@@ -42,6 +42,12 @@ public class SnowFlakeIdDemo {
     public static void test4(int num) {
         for (int i = 0; i < num; i++) {
             System.out.println(IdUtil.randomUUID());
+        }
+    }
+
+    public static void test5(int num) {
+        for (int i = 0; i < num; i++) {
+            System.out.println(IdUtil.fastUUID());
         }
     }
 }

@@ -1,6 +1,6 @@
 package pers.god.demo.reflect;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pers.god.demo.domain.Person;
 
 import java.lang.reflect.Constructor;

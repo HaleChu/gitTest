@@ -3,7 +3,7 @@ package pers.god.demo.snowFlake;
 import cn.hutool.crypto.SmUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.SM2;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.LinkedHashMap;

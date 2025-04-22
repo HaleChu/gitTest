@@ -1,6 +1,9 @@
 package pers.god.demo.json;
 
-import org.apache.commons.codec.digest.DigestUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import pers.god.demo.password.PasswordEncoderHelper;
 
 /**
  * @Author chuhao
@@ -9,14 +12,20 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class JsonDemo {
 
-    public static void main(String[] args) {
-        String uniqueCode = "A15675";
-        String sortStr = (int) uniqueCode.charAt(0) + uniqueCode.substring(1);
-        String newCodeSort = String.valueOf(Integer.parseInt(sortStr) + 1);
-        uniqueCode = Character.toUpperCase((char) Integer.parseInt(newCodeSort.substring(0, newCodeSort.length() - 5))) + newCodeSort.substring(newCodeSort.length() - 5);
-        System.out.println(uniqueCode);
+    public static void main(String[] args) throws JsonProcessingException {
+        Person person = new Person("王五", 21, "教授");
+        System.out.println(person);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String str = objectMapper.writeValueAsString(person);
+        System.out.println(str);
+        System.out.println("漂亮打印");
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        System.out.println(str);
+        String json = "{\"name\":\"李四\",\"age\":22,\"job\":\"CEO\"}";
+        Person person1 = objectMapper.readValue(json, Person.class);
+        System.out.println(person1);
 
-        String idNumber = "46010119800101031X";
-        System.out.println(DigestUtils.md5Hex(idNumber));
+        System.out.println(PasswordEncoderHelper.decryptByDES("dbMBRKUz9osSNuEu6sLvOuHGkxrWzqML"));
+
     }
 }

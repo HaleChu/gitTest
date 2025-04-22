@@ -1,0 +1,152 @@
+package pers.god.demo.file;
+
+import cn.hutool.http.HttpUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @Author chuhao
+ * @Date 2025/2/18
+ * @Version 1.0.0
+ */
+public class MongoDownload {
+
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("曲水园","67b707749c28d5b5a85ee3af");
+        map.put("上海青西郊野公园","67b707749c28d5b5a85ee3a1");
+        map.put("福泉山遗址","67b707749c28d5b5a85ee399");
+        map.put("大观园","67b707739c28d5b5a85ee380");
+        map.put("哇咔南门体育公园","67b6d480de4e4c7aeb6a2065");
+        map.put("托马斯娃城店","67b6d480de4e4c7aeb6a2059");
+        map.put("重固运动中心","67b6d480de4e4c7aeb6a204a");
+        map.put("徐泾北城都市运动中心","67b6d480de4e4c7aeb6a203e");
+        map.put("洛克公园城区店","67b6d480de4e4c7aeb6a2035");
+        map.put("贝菲特健身中心","67b6d480de4e4c7aeb6a202c");
+        map.put("贝菲特健身中心","67b6d480de4e4c7aeb6a2023");
+        map.put("洛克公园德必店","67b6d480de4e4c7aeb6a201a");
+        map.put("洛克公园华新店","67b6d480de4e4c7aeb6a2011");
+        map.put("洛克公园蟠龙馆","67b6d480de4e4c7aeb6a2008");
+        map.put("ibody运动中心","67b6d47fde4e4c7aeb6a1ff6");
+        map.put("墨动体育公园","67b6d47fde4e4c7aeb6a1fed");
+        map.put("热浪健身会所","67b6d47fde4e4c7aeb6a1fe4");
+        map.put("威廉姆斯健身房","67b6d47fde4e4c7aeb6a1fdb");
+        map.put("青浦区游泳馆","67b6d47fde4e4c7aeb6a1fd2");
+        map.put("青浦乒羽馆","67b6d47fde4e4c7aeb6a1fc9");
+        map.put("九棵树未来艺术中心","66ec2ac2de4e4c1d5e1394da");
+        map.put("光猪圈健身房","66e5541dde4e4c132656b505");
+        map.put("勇舸游泳馆","66e5541dde4e4c132656b4fb");
+        map.put("攀岩馆","66e5541dde4e4c132656b4f4");
+        map.put("超越网球馆","66e5541dde4e4c132656b4ea");
+        map.put("洛克篮球馆（场）","66e5541dde4e4c132656b4e4");
+        map.put("水魔方水上运动俱乐部","66e5541cde4e4c132656b4b2");
+        map.put("海国羽毛球馆","66e5541cde4e4c132656b4ab");
+        map.put("黄浦江涵养林游览","66e43f1ade4e4c132656ac5a");
+        map.put("奉城镇市民艺术夜校","66e43f1ade4e4c132656ac52");
+        map.put("非遗体验-土布制作","66e43f1ade4e4c132656ac46");
+        map.put("非遗体验-活字印刷","66e43f1ade4e4c132656ac40");
+        map.put("南上海戏剧嘉年华","66e43f1ade4e4c132656ac3a");
+        map.put("冷江雨巷","66e43f1ade4e4c132656ac34");
+        map.put("青溪古韵","66e43f1ade4e4c132656ac25");
+        map.put("碧海金沙","66e43f1ade4e4c132656ac16");
+        map.put("淳之当代瓷器博物馆","66e43f1ade4e4c132656ac0a");
+        map.put("言子书院","66e43f1ade4e4c132656abfe");
+        map.put("奉贤区博物馆","66e43f1ade4e4c132656abf2");
+        map.put("绿地艺术中心（原董家渡艺术中心，筹备中）","66d975d4e9315c682ce479a0");
+        map.put("商船会馆（筹备中）","66d975d4e9315c682ce47991");
+        map.put("大上海电影院（待开业，原南市影剧院）","66d975d4e9315c682ce47987");
+        map.put("黄浦区文化中心（待开业）","66d975d4e9315c682ce4797e");
+        map.put("大世界","66d975d3e9315c682ce4795d");
+        map.put("黄浦剧场","66d975d2e9315c682ce4792e");
+        map.put("中国大戏院","66d975d1e9315c682ce478fa");
+        map.put("国泰电影院","66d975d0e9315c682ce478cd");
+        map.put("和平影都","66d975cfe9315c682ce478a3");
+        map.put("大光明电影院","66d975cee9315c682ce47874");
+        map.put("中国烟草博物馆","66d92813e9315c5978986cf2");
+        map.put("中国救捞陈列馆","66d92813e9315c5978986ce3");
+        map.put("上海院士风采馆","66d92813e9315c5978986cd4");
+        map.put("沪东工人运动展示馆","66d92813e9315c5978986cc5");
+        map.put("世界技能博物馆","66d92812e9315c5978986cb2");
+        map.put("中国近现代新闻出版博物馆","66d92812e9315c5978986ca3");
+        map.put("刘湛恩烈士故居红色文化主题馆","66d92812e9315c5978986c94");
+        map.put("上海印刷博物馆","66d92812e9315c5978986c85");
+        map.put("上海体育大学中国武术博物馆","66d92812e9315c5978986c76");
+        map.put("上海财经大学商学博物馆","66d92812e9315c5978986c67");
+        map.put("同济大学博物馆","66d92812e9315c5978986c5a");
+        map.put("复旦大学博物馆","66d92812e9315c5978986c4d");
+        map.put("上海国际时尚中心","66d92811e9315c5978986c41");
+        map.put("笔墨宫坊","66d92811e9315c5978986c35");
+        map.put("上海共青森林公园","66d92811e9315c5978986c29");
+        map.put("黄兴公园","66d92811e9315c5978986c1d");
+        map.put("秦皇岛路游船码头“初心启航”展厅","66d92811e9315c5978986c11");
+        map.put("YOUNG剧场","66d92811e9315c5978986c05");
+        map.put("国歌展示馆","66d92811e9315c5978986bf6");
+        map.put("杨浦区图书馆少儿分馆","66d92811e9315c5978986be8");
+        map.put("杨浦区图书馆平凉分馆","66d92811e9315c5978986bdc");
+        map.put("杨浦区图书馆","66d92811e9315c5978986bd0");
+        map.put("虹桥体育公园·水星游泳馆","66d12a1ae9315c91ac186d32");
+        map.put("上海市仙霞网球中心","66d1291be9315c91ac186d06");
+        map.put("西郊体育中心","66d1289ae9315c91ac186cd7");
+        map.put("虹桥体育公园","66d127f7e9315c91ac186c55");
+        map.put("“一江一河”苏河艺术之旅","66d12634e9315c91ac186b24");
+        map.put("找寻城市幸福密码","66d1259be9315c91ac186ad2");
+        map.put("聆听建筑音符，追寻历史足迹","66d124dce9315c91ac186aa5");
+        map.put("长宁文化艺术中心","66d12362e9315c91ac186a56");
+        map.put("长宁区图书馆","66d12274e9315c91ac186a3a");
+        map.put("长宁区非物质文化遗产保护中心","66d0625fe9315c91ac186561");
+        map.put("上海凝聚力工程博物馆","66d06190e9315c91ac186554");
+        map.put("宝山体育中心","660110b5f96e8817208c99b7");
+        map.put("“门楣之光·文荟梦想”人才文化专享服务（大世界/和平影都）","65fba570f96e8865e82537b8");
+        map.put("“共享经典·才聚黄浦”各界人才新年音乐会（上海大剧院/上海音乐厅）","65fba529f96e8865e82537a2");
+        map.put("绿地艺术中心（原董家渡艺术中心，筹备中）","65fba034f96e8865e8253796");
+        map.put("商船会馆（筹备中）","65fb9ffcf96e8865e825378a");
+        map.put("大上海电影院（待开业，原南市影剧院）","65fb9f9bf96e8865e8253784");
+        map.put("黄浦区文化中心（待开业）","65fb9e8ff96e8865e825377b");
+        map.put("大世界","65fb9e3cf96e8865e8253772");
+        map.put("黄浦剧场","65fb9dcdf96e8865e8253766");
+        map.put("中国大戏院","65fb9d52f96e8865e825375a");
+        map.put("国泰电影院","65fb9c89f96e8865e8253742");
+        map.put("和平影都","65fb9c0bf96e8865e8253736");
+        map.put("大光明电影院","65fb9b66f96e8865e8253727");
+        map.put("培罗蒙高级定制（四川路店）","65fabc70f96e88f1bce79f57");
+        map.put("培罗蒙高级定制（华山路店）","65fabc65f96e88f1bce79f54");
+        map.put("上海新世界大丸百货","65fabc58f96e88f1bce79f51");
+        map.put("通河全民体育中心","65fabc58f96e88f1bce79f51");
+        map.put("老凤祥珍品私洽中心","65faba64f96e88bf441b3ef7");
+        map.put("古今内衣旗舰店","65fab90af96e8855d43080eb");
+        map.put("上海药房劲松中医门诊部","65fab8e7f96e8855d43080e7");
+        map.put("上海药房淮海总店","65fab8e7f96e8855d43080e7");
+        map.put("大富贵斜土店","65fab521f96e8855d43080e1");
+        map.put("桔子上海浦江联航路酒店","65f5687ef96e8855fc3bb2da");
+        map.put("如家商旅（金标）-上海莘庄工业区春申路地铁站店","65f5687ef96e8855fc3bb2da");
+        map.put("白玉兰上海莘庄工业园区中春路酒店","65f5687ef96e8855fc3bb2da");
+        map.put("格林豪泰快捷酒店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭上海浦江五官科医院酒店","65f5687ef96e8855fc3bb2da");
+        map.put("上海喜裕酒店管理有限公司（锦江之星上海虹桥枢纽天山西路酒店）","65f5687ef96e8855fc3bb2da");
+        map.put("宜必思尚品上海漕河泾虹梅路酒店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭上海漕河泾虹梅路酒店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭上海交大江川路地铁站二店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭上海交大江川路地铁站新店","65f5687ef96e8855fc3bb2da");
+        map.put("桔子上海虹桥国展中心酒店","65f5687ef96e8855fc3bb2da");
+        map.put("宜必思上海新虹桥酒店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭上海新虹桥酒店","65f5687ef96e8855fc3bb2da");
+        map.put("全季上海虹桥机场七莘路酒店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭上海七宝地铁站酒店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭优佳商务区店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭优佳龙之梦店","65f5687ef96e8855fc3bb2da");
+        map.put("全季上海春申路酒店","65f5687ef96e8855fc3bb2da");
+        map.put("美豪丽致酒店上海颛桥万达店","65f5687ef96e8855fc3bb2da");
+        map.put("全季上海颛桥万达酒店","65f5687ef96e8855fc3bb2da");
+        map.put("上海闵行马桥轻居酒店","65f5687ef96e8855fc3bb2da");
+        map.put("汉庭上海吴泾步行街酒店","65f5687ef96e8855fc3bb2da");
+        map.put("桔子上海浦江沈杜公路地铁站酒店","65f5687ef96e8855fc3bb2da");
+        map.put("全季上海召稼楼古镇酒店","65f5687ef96e8855fc3bb2da");
+        String url = "https://shrctcpt.sh-italent.cn/api/talent-filemanagement/files/download/";
+        String destPath = "D:/tmp/photo/";
+        map.forEach((k, v) -> {
+            long size = HttpUtil.downloadFile(url + v, destPath + k + ".png");
+            System.out.println("Download size: " + size);
+        });
+    }
+}
