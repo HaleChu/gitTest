@@ -16,6 +16,10 @@ public class PercentCalculation {
         numberFormat.setMaximumFractionDigits(1);
         String result = numberFormat.format((float) a / (float) b * 100);
         System.out.println(result + "%");
+
+        String s = "2023-09";
+        System.out.println(s.substring(s.length() - 2));
+        System.out.println(s.substring(0, s.length() - 2));
     }
 
 }

@@ -1,6 +1,6 @@
 package pers.god.demo.map;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pers.god.demo.domain.Person;
 import pers.god.demo.jsoup.jsoupDemo;
 
